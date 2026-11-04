@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Management System</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        /* Header */
+        .header {
+            background: #1e3a8a;
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        .admin {
+            font-size: 14px;
+            background: rgba(255,255,255,0.15);
+            padding: 10px 15px;
+            border-radius: 20px;
+        }
+
+        /* Main */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 35px auto;
+        }
+
+        .title {
+            margin-bottom: 25px;
+        }
+
+        .title h1 {
+            font-size: 30px;
+            color: #1e293b;
+        }
+
+        .title p {
+            color: #64748b;
+            margin-top: 7px;
+        }
+
+        /* Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .card h3 {
+            color: #64748b;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .card h2 {
+            font-size: 28px;
+            color: #1e3a8a;
+        }
+
+        /* Form */
+        .form-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .form-box h2 {
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+
+        .form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .input-box label {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #475569;
+        }
+
+        .input-box input,
+        .input-box select {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .input-box input:focus,
+        .input-box select:focus {
+            border-color: #2563eb;
+        }
+
+        .btn {
+            margin-top: 10px;
+            padding: 13px 25px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* Table */
+        .table-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            overflow-x: auto;
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .table-header h2 {
+            color: #1e293b;
+        }
+
+        .search {
+            padding: 10px 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #eff6ff;
+            color: #1e3a8a;
+            padding: 14px;
+            text-align: left;
+        }
+
+        td {
+            padding: 14px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        tr:hover {
+            background: #f8fafc;
+        }
+
+        .status {
+            background: #dcfce7;
+            color: #15803d;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 18px 20px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .form {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                width: 94%;
+            }
+
+            .table-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .search {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            Student<span>Portal</span>
+        </div>
+
+        <div class="admin">
+            👤 Admin
+        </div>
+    </header>
+
+
+    <main class="container">
+
+        <!-- Title -->
+        <div class="title">
+            <h1>Student Management</h1>
+            <p>Manage student information and records</p>
+        </div>
+
+
+        <!-- Dashboard Cards -->
+        <div class="cards">
+
+            <div class="card">
+                <h3>Total Students</h3>
+                <h2>5</h2>
+            </div>
+
+            <div class="card">
+                <h3>Average Age</h3>
+                <h2>21.2</h2>
+            </div>
+
+            <div class="card">
+                <h3>Active Students</h3>
+                <h2>5</h2>
+            </div>
+
+        </div>
+
+
+        <!-- Registration Form -->
+        <div class="form-box">
+
+            <h2>➕ Add New Student</h2>
+
+            <form class="form">
+
+                <div class="input-box">
+                    <label>Student Name</label>
+                    <input type="text" placeholder="Enter student name">
+                </div>
+
+                <div class="input-box">
+                    <label>Email</label>
+                    <input type="email" placeholder="Enter email address">
+                </div>
+
+                <div class="input-box">
+                    <label>Age</label>
+                    <input type="number" placeholder="Enter age">
+                </div>
+
+                <div class="input-box">
+                    <label>Gender</label>
+                    <select>
+                        <option>Select Gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                </div>
+
+                <div>
+                    <button class="btn" type="submit">
+                        Add Student
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+
+
+        <!-- Student Table -->
+        <div class="table-box">
+
+            <div class="table-header">
+                <h2>📋 Student Records</h2>
+
+                <input
+                    class="search"
+                    type="text"
+                    placeholder="Search student..."
+                >
+            </div>
+
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Age</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>1</td>
+                        <td>Rahul</td>
+                        <td>rahul@gmail.com</td>
+                        <td>20</td>
+                        <td><span class="status">Active</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td>Priya</td>
+                        <td>priya@gmail.com</td>
+                        <td>21</td>
+                        <td><span class="status">Active</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>3</td>
+                        <td>Akash</td>
+                        <td>akash@gmail.com</td>
+                        <td>22</td>
+                        <td><span class="status">Active</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>4</td>
+                        <td>Neha</td>
+                        <td>neha@gmail.com</td>
+                        <td>20</td>
+                        <td><span class="status">Active</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>5</td>
+                        <td>Rohit</td>
+                        <td>rohit@gmail.com</td>
+                        <td>23</td>
+                        <td><span class="status">Active</span></td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </main>
+
+</body>
+</html>
